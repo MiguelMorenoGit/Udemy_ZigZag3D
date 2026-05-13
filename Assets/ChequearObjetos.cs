@@ -16,11 +16,11 @@ public class ChequearObjetos : MonoBehaviour
 
         if (Physics.Raycast(rayo, out tocado, 100f))
         {
-            print("Chocamos algo :" + tocado.transform.position);
+            //print("Chocamos algo :" + tocado.transform.position);
         }
         else
         {
-            print("No tocamos nada");
+            //print("No tocamos nada");
         }
 
         //RaycastHit tocado;

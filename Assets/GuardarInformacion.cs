@@ -7,7 +7,7 @@ public class GuardarInformacion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        print("El numero guardado es: " + ObtenerNumero());
+        //print("El numero guardado es: " + ObtenerNumero());
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class GuardarInformacion : MonoBehaviour
             if(numero > ObtenerNumero())
             {
                 PlayerPrefs.SetInt("MiNumero", numero);
-                print(numero);
+                //print(numero);
             }
         }    
     }
