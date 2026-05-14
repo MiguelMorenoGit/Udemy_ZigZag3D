@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
 {
     public bool juegoIniciado;
+    public int puntaje;
+    public Text textoPuntaje;
 
     public void IniciarJuego()
     {
@@ -22,5 +25,13 @@ public class GameManager : MonoBehaviour
     public void ReiniciarJuego()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void AumentarPuntaje()
+    {
+        puntaje++;
+
+        // setear el texto del puntaje en la UI
+        textoPuntaje.text = puntaje.ToString();
     }
 }

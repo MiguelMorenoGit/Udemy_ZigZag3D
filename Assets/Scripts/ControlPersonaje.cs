@@ -62,10 +62,21 @@ public class ControlPersonaje : MonoBehaviour
 
     private void CambiarDireccion()
     {
+        if(gameManager.juegoIniciado == false) return;
+
         caminarDerecha = !caminarDerecha;
 
         // Cambia la rotación del personaje para que camine en la dirección opuesta
         if (caminarDerecha) rb.MoveRotation(Quaternion.Euler(0, 45, 0));
         else rb.MoveRotation(Quaternion.Euler(0, -45, 0));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Cristal")
+        {
+            Destroy(other.gameObject);
+            gameManager.AumentarPuntaje();
+        }
     }
 }
