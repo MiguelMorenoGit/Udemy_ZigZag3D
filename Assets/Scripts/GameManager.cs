@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     public bool juegoIniciado;
     public int puntaje;
     public Text textoPuntaje;
+    public Text textoPuntajeMaximo;
+
+    private void Awake()
+    {
+        //Obtener puntaje maximo
+        textoPuntajeMaximo.text = "Mejor: " + ObtenerPuntajeMaximo().ToString();
+    }
 
     public void IniciarJuego()
     {
@@ -33,5 +40,21 @@ public class GameManager : MonoBehaviour
 
         // setear el texto del puntaje en la UI
         textoPuntaje.text = puntaje.ToString();
+        ActualizarPuntajeMaximo();
+    }
+
+    public int ObtenerPuntajeMaximo()
+    {
+        // Obtener el puntaje máximo almacenado en PlayerPrefs
+        int puntajeMaximo = PlayerPrefs.GetInt("PuntajeMaximo");
+        return puntajeMaximo;
+    }
+
+    public void ActualizarPuntajeMaximo()
+    {
+        if (puntaje > ObtenerPuntajeMaximo())
+        {
+            PlayerPrefs.SetInt("PuntajeMaximo", puntaje);
+        }
     }
 }

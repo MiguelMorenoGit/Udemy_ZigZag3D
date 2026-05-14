@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class ControlPersonaje : MonoBehaviour
 {
-
     public float velocidad = 5f;
+    public Transform comienzoRayo; // El punto desde donde se lanzará el rayo para detectar el suelo
+    public GameObject efectoCristal; // Prefab del efecto de partículas para el cristal
+    
     private Rigidbody rb;
     private bool caminarDerecha = true;
-
-    
-    public Transform comienzoRayo; // El punto desde donde se lanzará el rayo para detectar el suelo
     private Animator animator; // Referencia al componente Animator
-
     private GameManager gameManager; // Referencia al GameManager
 
     void Awake()
@@ -75,8 +73,11 @@ public class ControlPersonaje : MonoBehaviour
     {
         if(other.tag == "Cristal")
         {
-            Destroy(other.gameObject);
             gameManager.AumentarPuntaje();
+
+            GameObject cristalFX = Instantiate(efectoCristal, comienzoRayo.transform.position, Quaternion.identity);
+            Destroy(cristalFX, 3);
+            Destroy(other.gameObject);
         }
     }
 }
