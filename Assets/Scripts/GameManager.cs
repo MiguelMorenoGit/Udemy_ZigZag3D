@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public void IniciarJuego()
     {
         juegoIniciado = true;
+        // Iniciar la construcción de la ruta
+        FindAnyObjectByType<Ruta>().IniciarConctruccion();
+        
     }
 
     private void Update()
